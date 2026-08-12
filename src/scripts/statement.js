@@ -25,6 +25,7 @@ export async function renderStatement(mountEl, role) {
         <select id="st-status">
           <option value="">${t('statement.allStatuses')}</option>
           <option value="pending">${t('status.pending')}</option>
+          <option value="accepted">${t('status.accepted')}</option>
           <option value="completed">${t('status.completed')}</option>
           <option value="cancelled">${t('status.cancelled')}</option>
         </select>

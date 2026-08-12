@@ -239,7 +239,12 @@ function renderOrders() {
     list.appendChild(emptyState({ title: t('wholesaler.' + emptyKey) }));
     return;
   }
-  list.innerHTML = rows.map((o) => `
+  list.innerHTML = rows.map((o) => {
+    let actions = '';
+    if (o.status === 'pending' || o.status === 'accepted') {
+      actions = `<button class="btn btn-outline btn-sm btn-danger" data-cancel="${o.id}">${t('wholesaler.cancelOrder')}</button>`;
+    }
+    return `
     <div class="order-card">
       <div>
         <div class="order-name">${o.crop?.name ?? '—'}</div>
@@ -249,9 +254,25 @@ function renderOrders() {
         <div class="text-sm">${o.crop ? formatNPR(Number(o.crop.price) * Number(o.quantity)) : ''}</div>
         ${statusBadge(o.status)}
         <div class="text-xs text-muted">${timeAgo(o.created_at)}</div>
+        ${actions}
       </div>
     </div>
-  `).join('');
+  `;
+  }).join('');
+  list.querySelectorAll('[data-cancel]').forEach((btn) =>
+    btn.addEventListener('click', () => cancelOrder(btn.dataset.cancel))
+  );
+}
+
+async function cancelOrder(orderId) {
+  try {
+    await api(`/orders/${orderId}`, { method: 'PATCH', body: { status: 'cancelled' } });
+    const o = orders.find((x) => x.id === orderId);
+    if (o) o.status = 'cancelled';
+    renderOrders();
+  } catch {
+    // ignore
+  }
 }
 
 function renderMarketPrices() {

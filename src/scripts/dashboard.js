@@ -111,7 +111,7 @@ export function emptyState({ title, cta, onCta }) {
 export function statusBadge(status) {
   const cls = {
     pending: 'badge-amber', approved: 'badge-green', rejected: 'badge-red', sold_out: 'badge-gray',
-    completed: 'badge-green', cancelled: 'badge-red',
+    completed: 'badge-green', cancelled: 'badge-red', accepted: 'badge-blue',
     active: 'badge-green', suspended: 'badge-amber', banned: 'badge-red',
   }[status] || 'badge-gray';
   return `<span class="badge ${cls}">${t('status.' + status)}</span>`;

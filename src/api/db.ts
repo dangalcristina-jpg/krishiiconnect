@@ -71,7 +71,7 @@ export interface Order {
   farmer_id: string;
   crop_id: string;
   quantity: number;
-  status: 'pending' | 'completed' | 'cancelled';
+  status: 'pending' | 'accepted' | 'completed' | 'cancelled';
   created_at: string;
   crop?: Crop;
   farmer?: User;

@@ -39,10 +39,11 @@ function tabs() {
 
 function renderDashboard() {
   const activeCrops = crops.filter((c) => c.status === 'approved' || c.status === 'pending').length;
-  const earnings = orders
-    .filter((o) => o.status === 'completed' && o.crop)
+  const completedOrders = orders.filter((o) => o.status === 'completed' && o.crop);
+  const earnings = completedOrders
     .reduce((s, o) => s + Number(o.crop.price) * Number(o.quantity), 0);
-  const inquiries = orders.length;
+  const pendingOrders = orders.filter((o) => o.status === 'pending').length;
+  const acceptedOrders = orders.filter((o) => o.status === 'accepted').length;
 
   const body = getDashBody();
   body.innerHTML = `
@@ -50,12 +51,17 @@ function renderDashboard() {
       <div class="stats">
         ${statCard({ label: t('farmer.statActiveCrops'), value: activeCrops, icon: '🌾' })}
         ${statCard({ label: t('farmer.statEarnings'), value: formatNPR(earnings), icon: '💰', color: 'orange' })}
-        ${statCard({ label: t('farmer.statInquiries'), value: inquiries, icon: '📦' })}
+        ${statCard({ label: t('farmer.statPendingOrders'), value: pendingOrders, icon: '⏳' })}
+        ${statCard({ label: t('farmer.statAcceptedOrders'), value: acceptedOrders, icon: '✅' })}
       </div>
     </div>
     <div class="block">
       <h3 class="block-title">${t('farmer.quickActions')}</h3>
       <div class="quick-actions" id="quick-actions"></div>
+    </div>
+    <div class="block">
+      <h3 class="block-title">${t('farmer.recentOrders')}</h3>
+      <div id="farmer-orders"></div>
     </div>
     <div class="block">
       <h3 class="block-title">${t('farmer.recentActivity')}</h3>
@@ -69,6 +75,8 @@ function renderDashboard() {
   qa.appendChild(quickAction({ label: t('farmer.actionViewCrops'), icon: '🌾', onClick: () => switchTab('myCrops') }));
   qa.appendChild(quickAction({ label: t('farmer.actionCheckPrices'), icon: '📈', onClick: () => switchTab('marketPrices') }));
   qa.appendChild(quickAction({ label: t('farmer.actionUpdateProfile'), icon: '✏️', onClick: () => switchTab('profile') }));
+
+  renderOrdersTable(document.getElementById('farmer-orders'));
 
   const act = document.getElementById('activity');
   if (crops.length === 0 && orders.length === 0) {
@@ -84,6 +92,76 @@ function renderDashboard() {
         <span class="activity-time">${timeAgo(i.time)}</span>
       </div>
     `).join('');
+  }
+}
+
+function renderOrdersTable(el) {
+  if (orders.length === 0) {
+    el.appendChild(emptyState({ title: t('farmer.noOrders'), cta: '', onCta: null }));
+    return;
+  }
+  el.className = 'table-wrap';
+  el.innerHTML = `
+    <table>
+      <thead>
+        <tr>
+          <th>${t('farmer.orderCrop')}</th>
+          <th>${t('farmer.orderBuyer')}</th>
+          <th class="text-right">${t('farmer.orderQty')}</th>
+          <th class="text-right">${t('farmer.orderTotal')}</th>
+          <th>${t('farmer.orderStatus')}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        ${orders.map((o) => {
+          const total = o.crop ? formatNPR(Number(o.crop.price) * Number(o.quantity)) : '—';
+          let actions = '';
+          if (o.status === 'pending') {
+            actions = `
+              <button class="btn btn-primary btn-sm" data-accept="${o.id}">${t('farmer.accept')}</button>
+              <button class="btn btn-outline btn-sm btn-danger" data-cancel="${o.id}">${t('farmer.reject')}</button>
+            `;
+          } else if (o.status === 'accepted') {
+            actions = `
+              <button class="btn btn-primary btn-sm" data-complete="${o.id}">${t('farmer.markCompleted')}</button>
+              <button class="btn btn-outline btn-sm btn-danger" data-cancel="${o.id}">${t('farmer.cancel')}</button>
+            `;
+          }
+          return `
+            <tr>
+              <td class="font-semibold">${o.crop?.name ?? '—'}</td>
+              <td class="text-muted">${o.wholesaler?.full_name ?? '—'}</td>
+              <td class="text-right">${o.quantity} ${t('common.kg')}</td>
+              <td class="text-right font-semibold">${total}</td>
+              <td>${statusBadge(o.status)}</td>
+              <td><div class="flex gap-2">${actions}</div></td>
+            </tr>
+          `;
+        }).join('')}
+      </tbody>
+    </table>
+  `;
+  el.querySelectorAll('[data-accept]').forEach((btn) =>
+    btn.addEventListener('click', () => updateOrderStatus(btn.dataset.accept, 'accepted'))
+  );
+  el.querySelectorAll('[data-complete]').forEach((btn) =>
+    btn.addEventListener('click', () => updateOrderStatus(btn.dataset.complete, 'completed'))
+  );
+  el.querySelectorAll('[data-cancel]').forEach((btn) =>
+    btn.addEventListener('click', () => updateOrderStatus(btn.dataset.cancel, 'cancelled'))
+  );
+}
+
+async function updateOrderStatus(orderId, status) {
+  try {
+    await api(`/orders/${orderId}`, { method: 'PATCH', body: { status } });
+    const o = orders.find((x) => x.id === orderId);
+    if (o) o.status = status;
+    showCropToast(t('farmer.orderUpdated'), 'success');
+    renderDashboard();
+  } catch {
+    showCropToast(t('farmer.orderUpdateFailed'), 'error');
   }
 }
 

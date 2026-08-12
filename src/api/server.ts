@@ -465,13 +465,23 @@ export function createApiRouter() {
       const me = (req as any).user as User;
       const { id } = req.params;
       const { status } = req.body || {};
-      if (!['pending', 'completed', 'cancelled'].includes(status)) {
+      if (!['accepted', 'completed', 'cancelled'].includes(status)) {
         return res.status(400).json({ error: 'invalid_status' });
       }
       const { data: order } = (await db.from('orders').select('*').eq('id', id).maybeSingle()) as { data: Order | null };
       if (!order) return res.status(404).json({ error: 'not_found' });
       if (me.role !== 'admin' && order.farmer_id !== me.id && order.wholesaler_id !== me.id) {
         return res.status(403).json({ error: 'forbidden' });
+      }
+      // Enforce valid transitions: pending → accepted/cancelled, accepted → completed/cancelled
+      const validTransitions: Record<string, string[]> = {
+        pending: ['accepted', 'cancelled'],
+        accepted: ['completed', 'cancelled'],
+        completed: [],
+        cancelled: [],
+      };
+      if (!validTransitions[order.status]?.includes(status)) {
+        return res.status(400).json({ error: 'invalid_transition', current: order.status, attempted: status });
       }
       const { data, error } = await db.from('orders').update({ status }).eq('id', id).select('*').single();
       if (error) return res.status(500).json({ error: 'server_error' });
@@ -856,7 +866,7 @@ export function createApiRouter() {
         .from('orders')
         .select('*, crop:crops(*), farmer:users!orders_farmer_id_fkey(*), wholesaler:users!orders_wholesaler_id_fkey(*)')
         .order('created_at', { ascending: false });
-      if (status && ['pending', 'completed', 'cancelled'].includes(status)) {
+      if (status && ['pending', 'accepted', 'completed', 'cancelled'].includes(status)) {
         q = q.eq('status', status);
       }
       if (from) q = q.gte('created_at', new Date(from).toISOString());
