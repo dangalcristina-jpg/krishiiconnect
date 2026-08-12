@@ -68,46 +68,6 @@ function renderFeatures() {
   `).join('');
 }
 
-// ---------- Statistics ----------
-const STATS = [
-  { icon: '👨‍🌾', value: 1250, suffix: '+', key: 'home.statsFarmers' },
-  { icon: '🏪', value: 320, suffix: '+', key: 'home.statsWholesalers' },
-  { icon: '🌾', value: 4850, suffix: '+', key: 'home.statsProducts' },
-  { icon: '📦', value: 18000, suffix: '+', key: 'home.statsOrders' },
-  { icon: '📍', value: 77, suffix: '', key: 'home.statsDistricts' },
-];
-
-function renderStats() {
-  const el = document.getElementById('stats-grid');
-  if (!el) return;
-  el.innerHTML = STATS.map((s, i) => `
-    <div class="stat-card" data-stat-index="${i}">
-      <div class="stat-icon">${s.icon}</div>
-      <div class="stat-value" data-target="${s.value}" data-suffix="${s.suffix}">0${s.suffix}</div>
-      <div class="stat-label">${t(s.key)}</div>
-    </div>
-  `).join('');
-  animateCounters();
-}
-
-function animateCounters() {
-  document.querySelectorAll('.stat-value').forEach((el) => {
-    const target = Number(el.dataset.target);
-    const suffix = el.dataset.suffix || '';
-    const duration = 1500;
-    const start = performance.now();
-    const step = (now) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.floor(target * eased);
-      el.textContent = current.toLocaleString() + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-      else el.textContent = target.toLocaleString() + suffix;
-    };
-    requestAnimationFrame(step);
-  });
-}
-
 // ---------- Featured Crops ----------
 async function renderFeatured() {
   const el = document.getElementById('featured-crops');
@@ -329,7 +289,6 @@ function applyTranslations() {
 async function renderAll() {
   applyTranslations();
   renderCarousel();
-  renderStats();
   await renderFeatured();
   await renderHomePrices();
   renderNews();
