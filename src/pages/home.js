@@ -221,60 +221,6 @@ async function renderHomePrices() {
   }
 }
 
-// ---------- Testimonials ----------
-const TESTIMONIALS = [
-  { name: 'Ram Bahadur Thapa', role: 'Farmer · Chitwan', rating: 5, text: 'Krishi Connect helped me sell my vegetables directly to wholesalers. My income increased by 40% in just 3 months!', avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=120' },
-  { name: 'Sita Sharma', role: 'Wholesaler · Kathmandu', rating: 5, text: 'I can now find fresh produce from across Nepal in one place. The contact system is fast and reliable.', avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=120' },
-  { name: 'Hari Prasad Gurung', role: 'Farmer · Pokhara', rating: 4, text: 'Before, I had to travel to markets to sell my rice. Now buyers come to me through this platform.', avatar: 'https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=120' },
-  { name: 'Anita Adhikari', role: 'Wholesaler · Biratnagar', rating: 5, text: 'The live market prices feature helps me negotiate better. Best agricultural platform in Nepal.', avatar: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=120' },
-];
-
-let testimonialIdx = 0;
-let testimonialInterval;
-function renderTestimonials() {
-  const el = document.getElementById('testimonials-slider');
-  if (!el) return;
-  el.innerHTML = `
-    <div class="testimonial-slider">
-      <div class="testimonial-track" id="testimonial-track">
-        ${TESTIMONIALS.map((tm) => `
-          <div class="testimonial-card">
-            <div class="testimonial-stars">${'★'.repeat(tm.rating)}${'☆'.repeat(5 - tm.rating)}</div>
-            <p class="testimonial-text">"${tm.text}"</p>
-            <div class="testimonial-author">
-              <img src="${tm.avatar}" alt="${tm.name}" class="testimonial-avatar" loading="lazy" />
-              <div>
-                <div class="testimonial-name">${tm.name}</div>
-                <div class="testimonial-role">${tm.role}</div>
-              </div>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-      <div class="testimonial-controls">
-        <button class="testimonial-btn" id="tm-prev" aria-label="Previous">‹</button>
-        <div class="testimonial-dots" id="tm-dots">
-          ${TESTIMONIALS.map((_, i) => `<button class="tm-dot ${i === 0 ? 'active' : ''}" data-i="${i}"></button>`).join('')}
-        </div>
-        <button class="testimonial-btn" id="tm-next" aria-label="Next">›</button>
-      </div>
-    </div>
-  `;
-  testimonialIdx = 0;
-  const track = el.querySelector('#testimonial-track');
-  const dots = el.querySelectorAll('.tm-dot');
-  const go = (i) => {
-    testimonialIdx = (i + TESTIMONIALS.length) % TESTIMONIALS.length;
-    track.style.transform = `translateX(-${testimonialIdx * 100}%)`;
-    dots.forEach((d, j) => d.classList.toggle('active', j === testimonialIdx));
-  };
-  el.querySelector('#tm-prev').addEventListener('click', () => go(testimonialIdx - 1));
-  el.querySelector('#tm-next').addEventListener('click', () => go(testimonialIdx + 1));
-  dots.forEach((d) => d.addEventListener('click', (e) => go(Number(e.target.dataset.i))));
-  clearInterval(testimonialInterval);
-  testimonialInterval = setInterval(() => go(testimonialIdx + 1), 6000);
-}
-
 // ---------- News & Tips ----------
 const NEWS_ARTICLES = [
   { title: 'Best Rice Farming Practices', excerpt: 'Learn modern techniques to maximize your rice yield this season.', icon: '🌾', date: 'Jul 20, 2026' },
@@ -390,7 +336,6 @@ async function renderAll() {
   renderStats();
   await renderFeatured();
   await renderHomePrices();
-  renderTestimonials();
   renderNews();
   renderContactInfo();
 }
