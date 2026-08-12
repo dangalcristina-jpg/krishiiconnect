@@ -19,9 +19,13 @@ const PAGES: Record<string, string> = {
   '/wholesaler': 'src/pages/wholesaler.html',
 };
 
+const ARTICLE_PAGE = 'src/pages/article.html';
+
 function resolvePage(urlPath: string): string | null {
   const p = urlPath.split('?')[0];
-  return PAGES[p] ?? null;
+  if (PAGES[p]) return PAGES[p];
+  if (p.startsWith('/articles/') || p === '/articles') return ARTICLE_PAGE;
+  return null;
 }
 
 function serveHtml(server: ViteDevServer) {
@@ -90,6 +94,7 @@ export default defineConfig(({ mode }) => {
           admin: 'src/pages/admin.html',
           farmer: 'src/pages/farmer.html',
           wholesaler: 'src/pages/wholesaler.html',
+          article: 'src/pages/article.html',
         },
       },
     },

@@ -2,6 +2,7 @@ import { t, getLang, HERO_IMAGES, imageOrPlaceholder, cropImageSrc, formatNPR, s
 import { api } from '../scripts/api.js';
 import { renderNavbar, renderFooter, currentUser, resetCurrentUser, onLangChange } from '../scripts/shared.js';
 import { openProductModal, openContactModal } from '../scripts/home-modals.js';
+import { ARTICLES } from '../scripts/articles.js';
 
 let allCrops = [];
 
@@ -222,29 +223,24 @@ async function renderHomePrices() {
 }
 
 // ---------- News & Tips ----------
-const NEWS_ARTICLES = [
-  { title: 'Best Rice Farming Practices', excerpt: 'Learn modern techniques to maximize your rice yield this season.', icon: '🌾', date: 'Jul 20, 2026' },
-  { title: 'Vegetable Storage Tips', excerpt: 'Keep your vegetables fresh longer with these simple storage methods.', icon: '🥬', date: 'Jul 15, 2026' },
-  { title: 'Seasonal Crop Guide', excerpt: 'What to plant and when — a month-by-month guide for Nepali farmers.', icon: '📅', date: 'Jul 10, 2026' },
-  { title: 'Organic Farming Benefits', excerpt: 'Why organic farming is better for your soil and your income.', icon: '🌱', date: 'Jul 5, 2026' },
-];
+const NEWS_ARTICLES = ARTICLES;
 
 function renderNews() {
   const el = document.getElementById('news-grid');
   if (!el) return;
   el.innerHTML = NEWS_ARTICLES.map((a) => `
-    <div class="news-card">
+    <a href="/articles/${a.slug}" class="news-card">
       <div class="news-icon">${a.icon}</div>
       <div class="news-body">
         <div class="news-date">${a.date}</div>
         <h3>${a.title}</h3>
         <p class="text-muted text-sm">${a.excerpt}</p>
-        <a href="#" class="news-read-more">Read more →</a>
+        <span class="news-read-more">Read more →</span>
       </div>
-    </div>
+    </a>
   `).join('');
   document.getElementById('view-all-articles')?.addEventListener('click', () => {
-    alert('Articles page coming soon!');
+    window.location.href = '/articles/best-rice-farming-practices';
   });
 }
 

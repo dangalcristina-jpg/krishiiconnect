@@ -695,14 +695,58 @@ tbody tr:hover { background: #f9fafb; }
 .news-grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
 @media (min-width: 600px) { .news-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 900px) { .news-grid { grid-template-columns: repeat(4, 1fr); } }
-.news-card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; }
-.news-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-.news-icon { height: 120px; display: grid; place-items: center; font-size: 48px; background: linear-gradient(135deg, var(--green-50), #fef3c7); }
-.news-body { padding: 16px; }
+.news-card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; transition: transform 0.25s, box-shadow 0.25s; cursor: pointer; display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+.news-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.news-card:hover .news-read-more { text-decoration: underline; }
+.news-icon { height: 120px; display: grid; place-items: center; font-size: 48px; background: linear-gradient(135deg, var(--green-50), #fef3c7); transition: font-size 0.25s; }
+.news-card:hover .news-icon { font-size: 54px; }
+.news-body { padding: 16px; flex: 1; display: flex; flex-direction: column; }
 .news-date { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
 .news-body h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
-.news-read-more { font-size: 13px; color: var(--green); font-weight: 500; text-decoration: none; }
-.news-read-more:hover { text-decoration: underline; }
+.news-read-more { font-size: 13px; color: var(--green); font-weight: 500; text-decoration: none; margin-top: auto; }
+
+/* ---------- Article Detail Page ---------- */
+.article-page { padding-bottom: 48px; }
+.article-hero {
+  position: relative; min-height: 360px; display: flex; align-items: flex-end;
+  background-size: cover; background-position: center;
+}
+.article-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.15) 100%);
+}
+.article-hero-content { position: relative; z-index: 1; padding: 32px 16px 40px; }
+.article-hero-icon {
+  display: inline-grid; place-items: center; width: 56px; height: 56px; border-radius: 14px;
+  background: rgba(255,255,255,0.9); font-size: 28px; margin-bottom: 16px;
+}
+.article-title { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.25; }
+.article-meta { display: flex; gap: 16px; align-items: center; color: rgba(255,255,255,0.85); font-size: 14px; }
+.article-author { font-weight: 500; }
+@media (min-width: 768px) {
+  .article-hero { min-height: 420px; }
+  .article-hero-content { padding: 48px 16px 56px; }
+  .article-title { font-size: 36px; }
+}
+.article-body-wrap { max-width: 760px; padding: 32px 16px; }
+.article-back-btn { margin-bottom: 24px; }
+.article-excerpt { font-size: 18px; line-height: 1.7; color: var(--text); font-style: italic; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+.article-section { margin-bottom: 28px; }
+.article-section h2 { font-size: 20px; font-weight: 600; color: var(--green-dark); margin-bottom: 10px; }
+.article-section p { font-size: 15px; line-height: 1.8; color: var(--text); }
+.article-tips {
+  background: linear-gradient(135deg, var(--green-50), #fef3c7);
+  border-radius: var(--radius); padding: 28px 24px; margin: 36px 0;
+}
+.article-tips h2 { font-size: 18px; font-weight: 600; margin-bottom: 16px; color: var(--green-dark); }
+.article-tips ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.article-tips li { font-size: 15px; line-height: 1.6; color: var(--text); padding-left: 28px; position: relative; }
+.article-tips li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--green); font-weight: 700; font-size: 16px; }
+.article-related { margin-top: 48px; }
+.article-related h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; }
+.article-related .news-grid { grid-template-columns: 1fr; }
+@media (min-width: 600px) { .article-related .news-grid { grid-template-columns: repeat(3, 1fr); } }
+.btn-sm { padding: 8px 16px; font-size: 13px; }
 
 /* ---------- FAQ ---------- */
 .faq-container { max-width: 720px; margin: 0 auto; }
