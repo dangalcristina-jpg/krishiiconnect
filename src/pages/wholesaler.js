@@ -202,14 +202,14 @@ function renderBrowseGrid() {
   hydrateFarmerRatings(el);
 }
 
-let orderSub = 'pending';
+let orderSub = 'active';
 
 function renderOrders() {
   const body = getDashBody();
   body.innerHTML = `
     <h3 class="block-title">${t('wholesaler.ordersTitle')}</h3>
     <div class="subtabs" id="order-subtabs">
-      <button class="subtab ${orderSub === 'pending' ? 'active' : ''}" data-sub="pending">${t('wholesaler.ordersPending')}</button>
+      <button class="subtab ${orderSub === 'active' ? 'active' : ''}" data-sub="active">${t('wholesaler.ordersActive')}</button>
       <button class="subtab ${orderSub === 'completed' ? 'active' : ''}" data-sub="completed">${t('wholesaler.ordersCompleted')}</button>
       <button class="subtab ${orderSub === 'contacts' ? 'active' : ''}" data-sub="contacts">${t('wholesaler.ordersContacts')}</button>
     </div>
@@ -224,9 +224,9 @@ function renderOrders() {
   const list = document.getElementById('orders-list');
   let rows = [];
   let emptyKey = '';
-  if (orderSub === 'pending') {
-    rows = orders.filter((o) => o.status === 'pending');
-    emptyKey = 'ordersPendingEmpty';
+  if (orderSub === 'active') {
+    rows = orders.filter((o) => o.status === 'pending' || o.status === 'accepted');
+    emptyKey = 'ordersActiveEmpty';
   } else if (orderSub === 'completed') {
     rows = orders.filter((o) => o.status === 'completed');
     emptyKey = 'ordersCompletedEmpty';
