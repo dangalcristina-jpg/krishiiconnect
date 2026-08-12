@@ -1,0 +1,532 @@
+// i18n — English + Nepali (Devanagari). Persisted to localStorage.
+const STRINGS = {
+  en: {
+    'brand.tagline': 'From farmer to market',
+    'brand.name': 'Krishi Connect',
+    'nav.home': 'Home', 'nav.products': 'Products', 'nav.marketPrices': 'Market Prices',
+    'nav.about': 'About', 'nav.contact': 'Contact', 'nav.login': 'Login',
+    'nav.logout': 'Logout', 'nav.dashboard': 'Dashboard', 'nav.toggleLang': 'नेपाली',
+    'home.heroTitle': 'Welcome to Krishi Connect',
+    'home.heroSubtitle': 'किसानबाट बजारसम्म',
+    'home.heroDesc': 'A direct marketplace where Nepali farmers meet wholesalers — fair prices, no middlemen.',
+    'home.joinFarmer': 'Join as Farmer', 'home.joinWholesaler': 'Join as Wholesaler',
+    'home.featured': 'Featured Crops', 'home.featuredDesc': 'Fresh produce listed by verified farmers across Nepal.',
+    'home.viewAll': 'View All Products',
+    'home.whyTitle': 'Why Choose Krishi Connect?',
+    'home.whyDesc': 'A platform built to empower farmers and simplify sourcing for wholesalers.',
+    'home.searchPlaceholder': 'Search crops, farmers, districts, categories…',
+    'home.searchNoResults': 'No results found',
+    'home.categoriesTitle': 'Browse by Category', 'home.categoriesDesc': 'Find exactly what you need from our wide range of agricultural products.',
+    'home.cat.vegetables': 'Vegetables', 'home.cat.fruits': 'Fruits', 'home.cat.grains': 'Grains',
+    'home.cat.rice': 'Rice', 'home.cat.tea': 'Tea', 'home.cat.spices': 'Spices',
+    'home.cat.dairy': 'Dairy', 'home.cat.herbs': 'Herbs',
+    'home.allCategories': 'All Categories',
+    'home.statsFarmers': 'Registered Farmers', 'home.statsWholesalers': 'Verified Wholesalers',
+    'home.statsProducts': 'Products Listed', 'home.statsOrders': 'Successful Orders',
+    'home.statsDistricts': 'Districts Covered',
+    'home.viewDetails': 'View Details', 'home.contactFarmer': 'Contact Farmer',
+    'home.verifiedFarmer': 'Verified Farmer', 'home.inStock': 'In Stock', 'home.soldOut': 'Sold Out',
+    'home.harvestDate': 'Harvest Date', 'home.quantityAvailable': 'Quantity Available',
+    'home.category': 'Category', 'home.district': 'District', 'home.farmerName': 'Farmer Name',
+    'home.pricePerKg': 'Price per kg', 'home.businessName': 'Business Name',
+    'home.phone': 'Phone', 'home.phoneLoginRequired': 'Login to view phone number',
+    'home.relatedProducts': 'Related Products',
+    'home.description': 'Description', 'home.location': 'Location',
+    'home.marketPricesTitle': 'Live Market Prices', 'home.marketPricesDesc': 'Today\'s prices across major Nepali markets with weekly trends.',
+    'home.todayPrice': 'Today', 'home.yesterdayPrice': 'Yesterday', 'home.weeklyTrend': 'Weekly Trend',
+    'home.lastUpdated': 'Last Updated',
+    'home.testimonialsTitle': 'What Our Users Say', 'home.testimonialsDesc': 'Real stories from farmers and wholesalers using Krishi Connect.',
+    'home.successTitle': 'Success Stories', 'home.successDesc': 'Farmers whose income grew with Krishi Connect.',
+    'home.successIncome': 'Income Increased', 'home.successProductsSold': 'Products Sold',
+    'home.newsTitle': 'News & Agricultural Tips', 'home.newsDesc': 'Latest articles to help you farm smarter.',
+    'home.viewAllArticles': 'View All Articles',
+    'home.faqTitle': 'Frequently Asked Questions', 'home.faqDesc': 'Everything you need to know about Krishi Connect.',
+    'home.faq1Q': 'How do I register?', 'home.faq1A': 'Click "Login" and select "Register". Choose whether you are a farmer or wholesaler, enter your name, phone number, and a 4-digit PIN.',
+    'home.faq2Q': 'How do I sell crops?', 'home.faq2A': 'After registering as a farmer and logging in, go to your dashboard and click "Add Crop". Fill in the details and upload photos. An admin will approve it before it appears publicly.',
+    'home.faq3Q': 'How do I contact farmers?', 'home.faq3A': 'Register as a wholesaler, browse crops, and click "Contact Farmer" on any listing to send a quantity request.',
+    'home.faq4Q': 'How are prices decided?', 'home.faq4A': 'Farmers set their own prices. We also display live market prices so you can compare and make informed decisions.',
+    'home.downloadTitle': 'Get the App — Coming Soon', 'home.downloadDesc': 'Download the Krishi Connect mobile app for easy access on the go.',
+    'home.googlePlay': 'Google Play', 'home.appStore': 'App Store', 'home.qrCode': 'QR Code',
+    'home.newsletterTitle': 'Stay Updated', 'home.newsletterDesc': 'Subscribe to get market prices, farming tips, and new product alerts.',
+    'home.newsletterPlaceholder': 'Enter your email', 'home.subscribe': 'Subscribe',
+    'home.newsletterSuccess': 'Subscribed! Thank you.', 'home.newsletterError': 'Something went wrong. Please try again.',
+    'home.contactTitle': 'Get in Touch', 'home.contactDesc': 'We\'re here to help. Reach out anytime.',
+    'home.contactPhone': 'Phone', 'home.contactEmail': 'Email', 'home.contactAddress': 'Address',
+    'home.contactHours': 'Business Hours', 'home.mapPlaceholder': 'Google Map',
+    'home.privacyPolicy': 'Privacy Policy', 'home.terms': 'Terms & Conditions',
+    'home.helpCenter': 'Help Center', 'home.followUs': 'Follow Us',
+    'feature.directFarmers': 'Direct from Farmers', 'feature.directFarmersDesc': 'Source produce straight from the people who grow it.',
+    'feature.fairPricing': 'Fair Pricing', 'feature.fairPricingDesc': 'Transparent market prices for both sides of every deal.',
+    'feature.fastDelivery': 'Fast Delivery', 'feature.fastDeliveryDesc': 'Connect and coordinate shipments without delays.',
+    'products.title': 'All Products', 'products.subtitle': 'Browse fresh crops listed by verified farmers across Nepal.',
+    'products.empty': 'No crops available right now. Please check back soon.',
+    'products.contact': 'Contact', 'products.perKg': '/kg', 'products.available': 'Available',
+    'products.location': 'Location', 'products.farmer': 'Farmer',
+    'prices.title': 'Market Prices', 'prices.subtitle': 'Live crop prices across major Nepali markets.',
+    'prices.product': 'Product', 'prices.unit': 'Unit', 'prices.min': 'Min', 'prices.max': 'Max',
+    'prices.avg': 'Average', 'prices.trend': 'Trend', 'prices.updated': 'Updated',
+    'prices.empty': 'No market prices available yet.',
+    'about.title': 'About Krishi Connect',
+    'about.mission': 'Krishi Connect is a marketplace built to connect Nepali farmers directly with wholesalers, removing layers of middlemen that erode farmer income and inflate wholesale costs. We believe in fair, transparent trade that benefits both ends of the supply chain.',
+    'about.featuresTitle': 'What we offer',
+    'contact.title': 'Contact Us', 'contact.subtitle': 'Have a question? Send us a message and we will get back to you.',
+    'contact.name': 'Name', 'contact.email': 'Email', 'contact.message': 'Message',
+    'contact.submit': 'Send Message', 'contact.success': 'Thanks! Your message has been received.',
+    'contact.error': 'Something went wrong. Please try again.',
+    'auth.loginTitle': 'Login', 'auth.loginSubtitle': 'Welcome back. Please sign in to continue.',
+    'auth.registerTitle': 'Create your account', 'auth.registerSubtitle': 'Join Krishi Connect as a farmer or wholesaler.',
+    'auth.adminTitle': 'Admin Login', 'auth.adminSubtitle': 'Restricted access — administrators only.',
+    'auth.fullName': 'Full Name', 'auth.businessName': 'Business Name', 'auth.phone': 'Phone Number',
+    'auth.pin': '4-digit PIN', 'auth.role': 'I am a', 'auth.farmer': 'Farmer', 'auth.wholesaler': 'Wholesaler',
+    'auth.login': 'Login', 'auth.register': 'Register',
+    'auth.noAccount': "Don't have an account?", 'auth.haveAccount': 'Already have an account?',
+    'auth.signupHere': 'Sign up here', 'auth.loginHere': 'Login here',
+    'auth.invalidCreds': 'Invalid phone or PIN.', 'auth.suspended': 'Your account has been suspended. Please contact support.',
+    'auth.exists': 'An account with this phone number already exists.',
+    'auth.genericError': 'Something went wrong. Please try again.',
+    'auth.pinHint': 'Use any 4 digits. Keep it safe — you will need it to log in.',
+    'auth.registerSuccess': 'Account created! Redirecting…',
+    'auth.adminLink': 'Admin?',
+    'contactModal.title': 'Contact Farmer', 'contactModal.subtitle': 'Request a quantity from this farmer.',
+    'contactModal.quantity': 'Quantity (kg)', 'contactModal.cancel': 'Cancel', 'contactModal.submit': 'Send Request',
+    'contactModal.loginRequired': 'Please login or register as a wholesaler to contact farmers.',
+    'contactModal.login': 'Login', 'contactModal.register': 'Register',
+    'contactModal.success': 'Your request has been sent to the farmer.',
+    'contactModal.wrongRole': 'Only wholesalers can request orders. Please log in as a wholesaler.',
+    'farmer.dashboard': 'Dashboard', 'farmer.myCrops': 'My Crops', 'farmer.addCrop': 'Add Crop',
+    'farmer.marketPrices': 'Market Prices', 'farmer.profile': 'Profile', 'farmer.logout': 'Logout',
+    'farmer.welcome': 'Welcome back, {name}',
+    'farmer.statActiveCrops': 'Active Crops', 'farmer.statEarnings': 'Total Earnings', 'farmer.statInquiries': 'Inquiries',
+    'farmer.quickActions': 'Quick Actions',
+    'farmer.actionAddCrop': 'Add New Crop', 'farmer.actionViewCrops': 'View My Crops',
+    'farmer.actionCheckPrices': 'Check Prices', 'farmer.actionUpdateProfile': 'Update Profile',
+    'farmer.recentActivity': 'Recent Activity', 'farmer.activityEmpty': 'No recent activity yet.',
+    'farmer.activityCropAdded': 'You added a new crop: {name}',
+    'farmer.activityInquiry': 'New inquiry received for {name}',
+    'farmer.activityPriceUpdated': 'Market prices were updated',
+    'farmer.myCropsTitle': 'My Crops', 'farmer.myCropsEmpty': 'No crops listed yet',
+    'farmer.myCropsEmptyCta': 'Add Your First Crop', 'farmer.status': 'Status',
+    'farmer.addCropTitle': 'Add a New Crop',
+    'farmer.cropName': 'Crop Name', 'farmer.cropQty': 'Quantity (kg)', 'farmer.cropPrice': 'Price per kg (NPR)',
+    'farmer.cropHarvest': 'Harvest Date', 'farmer.cropLocation': 'Location',
+    'farmer.cropDescription': 'Description', 'farmer.cropImage': 'Crop Image URL',
+    'farmer.cropImageHint': 'Paste a public image URL (https://…)',
+    'farmer.cropCategory': 'Category', 'farmer.cropCategoryHint': 'e.g. Vegetable, Grain, Fruit',
+    'farmer.addCropSubmit': 'Add Crop',
+    'farmer.addCropSuccess': 'Crop added! It will appear publicly once approved by an admin.',
+    'farmer.yourPrice': 'Your Price', 'farmer.notListed': 'Not listed',
+    'farmer.profileTitle': 'My Profile', 'farmer.fullName': 'Full Name', 'farmer.phone': 'Phone Number',
+    'farmer.farmLocation': 'Farm Location', 'farmer.yearsExperience': 'Years of Experience',
+    'farmer.aboutFarm': 'About Your Farm', 'farmer.avatar': 'Profile Picture',
+    'farmer.changePicture': 'Change Picture', 'farmer.save': 'Save Changes', 'farmer.reset': 'Reset',
+    'farmer.profileSaved': 'Profile updated.',
+    'farmer.role': 'Farmer', 'farmer.editProfile': 'Edit Profile', 'farmer.cancel': 'Cancel',
+    'wholesaler.dashboard': 'Dashboard', 'wholesaler.browseCrops': 'Browse Crops', 'wholesaler.myOrders': 'My Orders',
+    'wholesaler.marketPrices': 'Market Prices', 'wholesaler.profile': 'Profile', 'wholesaler.logout': 'Logout',
+    'wholesaler.welcome': 'Welcome back, {name}',
+    'wholesaler.statTotalOrders': 'Total Orders', 'wholesaler.statFarmersContacted': 'Farmers Contacted',
+    'wholesaler.statTotalSpent': 'Total Spent', 'wholesaler.quickActions': 'Quick Actions',
+    'wholesaler.actionBrowseCrops': 'Browse Crops', 'wholesaler.actionMyOrders': 'My Orders',
+    'wholesaler.actionMarketPrices': 'Market Prices', 'wholesaler.actionUpdateProfile': 'Update Profile',
+    'wholesaler.featuredToday': 'Featured Crops Today', 'wholesaler.browseTitle': 'Browse Crops',
+    'wholesaler.filterCrop': 'Filter by Crop', 'wholesaler.allCrops': 'All crops',
+    'wholesaler.priceRange': 'Price Range', 'wholesaler.anyPrice': 'Any price',
+    'wholesaler.location': 'Location', 'wholesaler.apply': 'Apply Filters', 'wholesaler.clear': 'Clear',
+    'wholesaler.browseEmpty': 'No crops match your filters.',
+    'wholesaler.ordersTitle': 'My Orders', 'wholesaler.ordersPending': 'Pending Orders',
+    'wholesaler.ordersCompleted': 'Completed Orders', 'wholesaler.ordersContacts': 'Farmer Contacts',
+    'wholesaler.ordersPendingEmpty': 'No pending orders — your pending orders will appear here.',
+    'wholesaler.ordersCompletedEmpty': 'No completed orders yet.',
+    'wholesaler.ordersContactsEmpty': 'You have not contacted any farmers yet.',
+    'wholesaler.availableFarmers': 'Available Farmers',
+    'wholesaler.profileTitle': 'My Profile', 'wholesaler.fullName': 'Full Name',
+    'wholesaler.businessName': 'Business Name', 'wholesaler.phone': 'Phone Number',
+    'wholesaler.businessLocation': 'Business Location', 'wholesaler.yearsInBusiness': 'Years in Business',
+    'wholesaler.storageCapacity': 'Storage Capacity (tons)', 'wholesaler.aboutBusiness': 'About Your Business',
+    'wholesaler.avatar': 'Profile Picture', 'wholesaler.changePicture': 'Change Picture',
+    'wholesaler.role': 'Wholesaler', 'wholesaler.editProfile': 'Edit Profile', 'wholesaler.cancel': 'Cancel',
+    'wholesaler.save': 'Save Changes', 'wholesaler.reset': 'Reset', 'wholesaler.profileSaved': 'Profile updated.',
+    'admin.dashboard': 'Dashboard', 'admin.users': 'Users', 'admin.pendingCrops': 'Pending Crops',
+    'admin.orders': 'Orders', 'admin.marketPrices': 'Market Prices', 'admin.logout': 'Logout',
+    'admin.welcome': 'Admin Console',
+    'admin.statActiveCrops': 'Total Active Crops', 'admin.statTotalOrders': 'Total Orders',
+    'admin.statTotalKg': 'Total KG Ordered', 'admin.statTotalUsers': 'Total Users',
+    'admin.usersTitle': 'Users', 'admin.userName': 'Name', 'admin.userBusiness': 'Business',
+    'admin.userPhone': 'Phone', 'admin.userRole': 'Role', 'admin.userStatus': 'Status',
+    'admin.userActions': 'Actions', 'admin.activate': 'Activate', 'admin.suspend': 'Suspend',
+    'admin.usersEmpty': 'No users found.',
+    'admin.pendingTitle': 'Pending Crops', 'admin.pendingEmpty': 'No crops awaiting approval.',
+    'admin.pendingCrop': 'Crop', 'admin.pendingFarmer': 'Farmer', 'admin.pendingPrice': 'Price',
+    'admin.pendingQuantity': 'Quantity', 'admin.approve': 'Approve', 'admin.reject': 'Reject',
+    'admin.ordersTitle': 'All Orders', 'admin.ordersEmpty': 'No orders yet.',
+    'admin.ordersBuyer': 'Buyer', 'admin.ordersSeller': 'Seller', 'admin.ordersCrop': 'Crop',
+    'admin.ordersQuantity': 'Quantity', 'admin.ordersStatus': 'Status', 'admin.ordersDate': 'Date',
+    'admin.pricesTitle': 'Market Prices', 'admin.pricesAdd': 'Add New Price', 'admin.pricesUpdate': 'Update',
+    'admin.pricesDelete': 'Delete', 'admin.pricesProduct': 'Product', 'admin.pricesUnit': 'Unit',
+    'admin.pricesMin': 'Min Price', 'admin.pricesMax': 'Max Price', 'admin.pricesAvg': 'Avg Price',
+    'admin.pricesTrend': 'Trend', 'admin.pricesUp': 'Up', 'admin.pricesDown': 'Down', 'admin.pricesStable': 'Stable',
+    'admin.pricesSave': 'Save', 'admin.pricesSaved': 'Price saved.',
+    'admin.pricesEmpty': 'No prices yet. Add the first one above.',
+    'common.loading': 'Loading…', 'common.error': 'Something went wrong.', 'common.retry': 'Retry',
+    'common.save': 'Save', 'common.cancel': 'Cancel', 'common.back': 'Back',
+    'common.kg': 'kg', 'common.npr': 'NPR', 'common.actions': 'Actions',
+    'status.pending': 'Pending', 'status.approved': 'Approved', 'status.rejected': 'Rejected',
+    'status.sold_out': 'Sold Out', 'status.active': 'Active', 'status.suspended': 'Suspended',
+    'status.banned': 'Banned', 'status.completed': 'Completed', 'status.cancelled': 'Cancelled',
+    'role.farmer': 'Farmer', 'role.wholesaler': 'Wholesaler', 'role.admin': 'Admin',
+    'trend.up': 'Up', 'trend.down': 'Down', 'trend.stable': 'Stable',
+    'toast.loginRequired': 'Please log in to continue.',
+    'farmer.statement': 'Statement', 'wholesaler.statement': 'Statement',
+    'statement.title': 'Transaction Statement', 'statement.subtitle': 'A full record of your orders on Krishi Connect.',
+    'statement.from': 'From', 'statement.to': 'To', 'statement.status': 'Status',
+    'statement.allStatuses': 'All statuses', 'statement.apply': 'Apply', 'statement.clear': 'Clear',
+    'statement.export': 'Export CSV', 'statement.date': 'Date', 'statement.crop': 'Crop',
+    'statement.qty': 'Quantity', 'statement.price': 'Price/kg', 'statement.amount': 'Amount',
+    'statement.counterpart': 'Buyer', 'statement.counterpartSeller': 'Seller',
+    'statement.statusCol': 'Status', 'statement.grandTotal': 'Grand total (completed)',
+    'statement.empty': 'No transactions match your filters.', 'statement.count': 'Orders',
+    'statement.completedCount': 'Completed',
+    'reviews.title': 'Reviews', 'reviews.average': '{avg} from {count} review(s)',
+    'reviews.noReviews': 'No reviews yet', 'reviews.seeAll': 'See all reviews',
+    'reviews.leaveReview': 'Leave a Review', 'reviews.leaveReviewDesc': 'Review a completed order.',
+    'reviews.noEligible': 'You have no completed orders awaiting a review.',
+    'reviews.selectOrder': 'Select an order to review',
+    'reviews.rating': 'Rating', 'reviews.comment': 'Comment (optional)',
+    'reviews.submit': 'Submit Review', 'reviews.cancel': 'Cancel',
+    'reviews.success': 'Review submitted. Thank you!', 'reviews.error': 'Could not submit review.',
+    'reviews.verified': 'Verified purchase', 'reviews.orderOn': 'order on {date}',
+    'reviews.by': 'by {name}', 'reviews.you': 'You',
+    'reviews.myReviews': 'My Reviews', 'reviews.myReviewsEmpty': 'You have not written any reviews yet.',
+    'reviews.aboutYou': 'Reviews About You', 'reviews.aboutFarmer': 'Reviews of this Farmer',
+    'reviews.aboutWholesaler': 'Reviews of this Wholesaler',
+    'reviews.stars': '{n} stars',
+  },
+  ne: {
+    'brand.tagline': 'किसानबाट बजारसम्म',
+    'brand.name': 'कृषि कनेक्ट',
+    'nav.home': 'गृह', 'nav.products': 'उत्पादनहरू', 'nav.marketPrices': 'बजार मूल्य',
+    'nav.about': 'हाम्रो बारेमा', 'nav.contact': 'सम्पर्क', 'nav.login': 'लगइन',
+    'nav.logout': 'लगआउट', 'nav.dashboard': 'ड्यासबोर्ड', 'nav.toggleLang': 'EN',
+    'home.heroTitle': 'कृषि कनेक्टमा स्वागत छ',
+    'home.heroSubtitle': 'किसानबाट बजारसम्म',
+    'home.heroDesc': 'नेपाली किसान र थोक व्यापारीलाई सीधै जोड्ने बजार — उचित मूल्य, बिचौलिया बिना।',
+    'home.joinFarmer': 'किसानको रूपमा सामेल हुनुहोस्',
+    'home.joinWholesaler': 'थोक व्यापारीको रूपमा सामेल हुनुहोस्',
+    'home.featured': 'विशेष उत्पादनहरू',
+    'home.featuredDesc': 'नेपालभरि प्रमाणित किसानहरूले सूचीबद्ध ताजा उत्पादन।',
+    'home.viewAll': 'सबै उत्पादन हेर्नुहोस्',
+    'home.whyTitle': 'कृषि कनेक्ट किन रोज्ने?',
+    'home.whyDesc': 'किसानलाई सशक्त बनाउन र थोक व्यापारीको स्रोत सरल बनाउन बनेको प्लेटफर्म।',
+    'home.searchPlaceholder': 'उत्पादन, किसान, जिल्ला, श्रेणी खोज्नुहोस्…',
+    'home.searchNoResults': 'कुनै नतिजा फेला परेन',
+    'home.categoriesTitle': 'श्रेणी अनुसार ब्राउज गर्नुहोस्', 'home.categoriesDesc': 'हाम्रो विस्तृत कृषि उत्पादनहरूबाट तपाईंलाई चाहिएको फेला पार्नुहोस्।',
+    'home.cat.vegetables': 'तरकारी', 'home.cat.fruits': 'फलफूल', 'home.cat.grains': 'अन्न',
+    'home.cat.rice': 'चामल', 'home.cat.tea': 'चिया', 'home.cat.spices': 'मसला',
+    'home.cat.dairy': 'डेरी', 'home.cat.herbs': 'जडीबुटी',
+    'home.allCategories': 'सबै श्रेणी',
+    'home.statsFarmers': 'दर्ता किसान', 'home.statsWholesalers': 'प्रमाणित थोक व्यापारी',
+    'home.statsProducts': 'सूचीबद्ध उत्पादन', 'home.statsOrders': 'सफल अर्डर',
+    'home.statsDistricts': 'जिल्ला अधा',
+    'home.viewDetails': 'विवरण हेर्नुहोस्', 'home.contactFarmer': 'किसानलाई सम्पर्क गर्नुहोस्',
+    'home.verifiedFarmer': 'प्रमाणित किसान', 'home.inStock': 'स्टकमा छ', 'home.soldOut': 'बिक्री भयो',
+    'home.harvestDate': 'कटनी मिति', 'home.quantityAvailable': 'उपलब्ध मात्रा',
+    'home.category': 'श्रेणी', 'home.district': 'जिल्ला', 'home.farmerName': 'किसानको नाम',
+    'home.pricePerKg': 'प्रति के.जी. मूल्य', 'home.businessName': 'व्यवसायको नाम',
+    'home.phone': 'फोन', 'home.phoneLoginRequired': 'फोन नम्बर हेर्न लगइन गर्नुहोस्',
+    'home.relatedProducts': 'सम्बन्धित उत्पादन',
+    'home.description': 'विवरण', 'home.location': 'स्थान',
+    'home.marketPricesTitle': 'ताजा बजार मूल्य', 'home.marketPricesDesc': 'नेपालका प्रमुख बजारका आजका मूल्य र साप्ताहिक प्रवृत्ति।',
+    'home.todayPrice': 'आज', 'home.yesterdayPrice': 'हालै', 'home.weeklyTrend': 'साप्ताहिक प्रवृत्ति',
+    'home.lastUpdated': 'अन्तिम अपडेट',
+    'home.testimonialsTitle': 'हाम्रा प्रयोगकर्ताका भनाइ', 'home.testimonialsDesc': 'कृषि कनेक्ट प्रयोग गर्ने किसान र थोक व्यापारीका वास्तविक कथाहरू।',
+    'home.successTitle': 'सफलताका कथा', 'home.successDesc': 'कृषि कनेक्टसँगै आम्दानी बढाउने किसानहरू।',
+    'home.successIncome': 'आम्दानी बढ्यो', 'home.successProductsSold': 'उत्पादन बिक्री भयो',
+    'home.newsTitle': 'समाचार र कृषि टिप्स', 'home.newsDesc': 'राम्रो किसानीका लागि नवीनतम लेखहरू।',
+    'home.viewAllArticles': 'सबै लेख हेर्नुहोस्',
+    'home.faqTitle': 'बारम्बार सोधिने प्रश्न', 'home.faqDesc': 'कृषि कनेक्टका बारेमा तपाईंले जान्नुपर्ने सबै।',
+    'home.faq1Q': 'मैले कसरी दर्ता गर्ने?', 'home.faq1A': 'लगइनमा क्लिक गरेर दर्ता छान्नुहोस्। किसान वा थोक व्यापारी छान्नुहोस्, नाम, फोन नम्बर र ४-अंक PIN राख्नुहोस्।',
+    'home.faq2Q': 'मैले उत्पादन कसरी बेच्ने?', 'home.faq2A': 'किसानको रूपमा दर्ता गरी लगइन गरेपछि, ड्यासबोर्डमा गई उत्पादन थप्नुहोस् क्लिक गर्नुहोस्। विवरण भर्नुहोस् र तस्बिर अपलोड गर्नुहोस्। एडमिनले स्वीकृत गरेपछि मात्र सार्वजनिक देखिनेछ।',
+    'home.faq3Q': 'किसानलाई कसरी सम्पर्क गर्ने?', 'home.faq3A': 'थोक व्यापारीको रूपमा दर्ता गर्नुहोस्, उत्पादन ब्राउज गर्नुहोस्, र कुनै पनि सूचीमा किसानलाई सम्पर्क गर्नुहोस् क्लिक गरेर मात्रा अनुरोध पठाउनुहोस्।',
+    'home.faq4Q': 'मूल्य कसरी निर्धारण हुन्छ?', 'home.faq4A': 'किसानहरूले आफ्नै मूल्य निर्धारण गर्छन्। हामी ताजा बजार मूल्य पनि देखाउँछौं ताकि तपाईं तुलना गर्न सक्नुहुन्छ।',
+    'home.downloadTitle': 'एप चाँडै आउँदै —', 'home.downloadDesc': 'कृषि कनेक्ट मोबाइल एप डाउनलोड गर्नुहोस्।',
+    'home.googlePlay': 'गुगल प्ले', 'home.appStore': 'एप स्टोर', 'home.qrCode': 'QR कोड',
+    'home.newsletterTitle': 'अपडेट राख्नुहोस्', 'home.newsletterDesc': 'बजार मूल्य, किसानी टिप्स, र नयाँ उत्पादन अलर्ट पाउन सदस्यता लिनुहोस्।',
+    'home.newsletterPlaceholder': 'तपाईंको इमेल राख्नुहोस्', 'home.subscribe': 'सदस्यता',
+    'home.newsletterSuccess': 'सदस्यता लिइयो! धन्यवाद।', 'home.newsletterError': 'केही गडबड भयो। कृपया फेरि प्रयास गर्नुहोस्।',
+    'home.contactTitle': 'सम्पर्क गर्नुहोस्', 'home.contactDesc': 'हामी सहयोगका लागि यहाँ छौं। कुनै बेला सम्पर्क गर्नुहोस्।',
+    'home.contactPhone': 'फोन', 'home.contactEmail': 'इमेल', 'home.contactAddress': 'ठेगाना',
+    'home.contactHours': 'कार्य समय', 'home.mapPlaceholder': 'गुगल मानचित्र',
+    'home.privacyPolicy': 'गोपनीयता नीति', 'home.terms': 'सर्त र शर्त',
+    'home.helpCenter': 'सहयोग केन्द्र', 'home.followUs': 'फल्ला गर्नुहोस्',
+    'feature.directFarmers': 'सीधै किसानबाट',
+    'feature.directFarmersDesc': 'उब्जाउनेहरूबाट सीधै उत्पादन खरिद गर्नुहोस्।',
+    'feature.fairPricing': 'उचित मूल्य',
+    'feature.fairPricingDesc': 'हरेक सम्झौताका दुवै पक्षका लागि पारदर्शी बजार मूल्य।',
+    'feature.fastDelivery': 'छिटो ढुवानी',
+    'feature.fastDeliveryDesc': 'ढिलाइ बिना सम्पर्क र ढुवानी समन्वय गर्नुहोस्।',
+    'products.title': 'सबै उत्पादनहरू',
+    'products.subtitle': 'नेपालभरि प्रमाणित किसानहरूले सूचीबद्ध ताजा उत्पादन हेर्नुहोस्।',
+    'products.empty': 'अहिले कुनै उत्पादन उपलब्ध छैन। कृपया फेरि हेर्नुहोस्।',
+    'products.contact': 'सम्पर्क', 'products.perKg': '/के.जी.', 'products.available': 'उपलब्ध',
+    'products.location': 'स्थान', 'products.farmer': 'किसान',
+    'prices.title': 'बजार मूल्य', 'prices.subtitle': 'नेपालका प्रमुख बजारका ताजा उत्पादन मूल्य।',
+    'prices.product': 'उत्पादन', 'prices.unit': 'एकाइ', 'prices.min': 'न्यूनतम', 'prices.max': 'अधिकतम',
+    'prices.avg': 'औसत', 'prices.trend': 'प्रवृत्ति', 'prices.updated': 'अपडेट',
+    'prices.empty': 'अहिले बजार मूल्य उपलब्ध छैन।',
+    'about.title': 'कृषि कनेक्टको बारेमा',
+    'about.mission': 'कृषि कनेक्ट नेपाली किसानलाई थोक व्यापारीसँग सीधै जोड्ने बजार हो, जसले किसानको आम्दानी घटाउने र थोक मूल्य बढाउने बिचौलियाहरूलाई हटाउँछ। हामी दुवै पक्षलाई फाइदा पुग्ने उचित, पारदर्शी व्यापारमा विश्वास राख्छौं।',
+    'about.featuresTitle': 'हामीले प्रदान गर्ने कुराहरू',
+    'contact.title': 'सम्पर्क गर्नुहोस्',
+    'contact.subtitle': 'तपाईंको प्रश्न छ? सन्देश पठाउनुहोस्, हामी सम्पर्क गर्नेछौं।',
+    'contact.name': 'नाम', 'contact.email': 'इमेल', 'contact.message': 'सन्देश',
+    'contact.submit': 'सन्देश पठाउनुहोस्',
+    'contact.success': 'धन्यवाद! तपाईंको सन्देश प्राप्त भयो।',
+    'contact.error': 'केही गडबड भयो। कृपया फेरि प्रयास गर्नुहोस्।',
+    'auth.loginTitle': 'लगइन', 'auth.loginSubtitle': 'फेरि स्वागत छ। अगाडि बढ्न कृपया साइन इन गर्नुहोस्।',
+    'auth.registerTitle': 'खाता सिर्जना गर्नुहोस्',
+    'auth.registerSubtitle': 'किसान वा थोक व्यापारीको रूपमा कृषि कनेक्टमा सामेल हुनुहोस्।',
+    'auth.adminTitle': 'एडमिन लगइन', 'auth.adminSubtitle': 'प्रतिबन्धित पहुँच — एडमिनहरू मात्र।',
+    'auth.fullName': 'पूरा नाम', 'auth.businessName': 'व्यवसायको नाम', 'auth.phone': 'फोन नम्बर',
+    'auth.pin': '४-अंक PIN', 'auth.role': 'मा छु', 'auth.farmer': 'किसान', 'auth.wholesaler': 'थोक व्यापारी',
+    'auth.login': 'लगइन', 'auth.register': 'दर्ता',
+    'auth.noAccount': 'खाता छैन?', 'auth.haveAccount': 'पहिले नै खाता छ?',
+    'auth.signupHere': 'यहाँ साइन अप गर्नुहोस्', 'auth.loginHere': 'यहाँ लगइन गर्नुहोस्',
+    'auth.invalidCreds': 'गलत फोन वा PIN।',
+    'auth.suspended': 'तपाईंको खाता निलम्बित छ। कृपया सहयोगमा सम्पर्क गर्नुहोस्।',
+    'auth.exists': 'यो फोन नम्बरमा खाता पहिले नै छ।',
+    'auth.genericError': 'केही गडबड भयो। कृपया फेरि प्रयास गर्नुहोस्।',
+    'auth.pinHint': 'कुनै ४ अंक प्रयोग गर्नुहोस्। सुरक्षित राख्नुहोस् — लगइनका लागि आवश्यक हुनेछ।',
+    'auth.registerSuccess': 'खाता सिर्जना भयो! अगाडि बढ्दै…',
+    'auth.adminLink': 'एडमिन?',
+    'contactModal.title': 'किसानलाई सम्पर्क गर्नुहोस्',
+    'contactModal.subtitle': 'यस किसानबाट मात्रा अनुरोध गर्नुहोस्।',
+    'contactModal.quantity': 'मात्रा (के.जी.)', 'contactModal.cancel': 'रद्द', 'contactModal.submit': 'अनुरोध पठाउनुहोस्',
+    'contactModal.loginRequired': 'किसानलाई सम्पर्क गर्न कृपया थोक व्यापारीको रूपमा लगइन वा दर्ता गर्नुहोस्।',
+    'contactModal.login': 'लगइन', 'contactModal.register': 'दर्ता',
+    'contactModal.success': 'तपाईंको अनुरोध किसानलाई पठाइयो।',
+    'contactModal.wrongRole': 'केवल थोक व्यापारीले अर्डर अनुरोध गर्न सक्छन्। कृपया थोक व्यापारीको रूपमा लगइन गर्नुहोस्।',
+    'farmer.dashboard': 'ड्यासबोर्ड', 'farmer.myCrops': 'मेरा उत्पादन', 'farmer.addCrop': 'उत्पादन थप्नुहोस्',
+    'farmer.marketPrices': 'बजार मूल्य', 'farmer.profile': 'प्रोफाइल', 'farmer.logout': 'लगआउट',
+    'farmer.welcome': 'फेरि स्वागत छ, {name}',
+    'farmer.statActiveCrops': 'सक्रिय उत्पादन', 'farmer.statEarnings': 'कुल आम्दानी', 'farmer.statInquiries': 'अनुरोधहरू',
+    'farmer.quickActions': 'छिटो कार्यहरू',
+    'farmer.actionAddCrop': 'नयाँ उत्पादन थप्नुहोस्', 'farmer.actionViewCrops': 'मेरा उत्पादन हेर्नुहोस्',
+    'farmer.actionCheckPrices': 'मूल्य हेर्नुहोस्', 'farmer.actionUpdateProfile': 'प्रोफाइल अपडेट',
+    'farmer.recentActivity': 'हालैका गतिविधि', 'farmer.activityEmpty': 'अहिलेसम्म कुनै गतिविधि छैन।',
+    'farmer.activityCropAdded': 'तपाईंले नयाँ उत्पादन थप्नुभयो: {name}',
+    'farmer.activityInquiry': '{name} का लागि नयाँ अनुरोध प्राप्त भयो',
+    'farmer.activityPriceUpdated': 'बजार मूल्य अपडेट भयो',
+    'farmer.myCropsTitle': 'मेरा उत्पादन', 'farmer.myCropsEmpty': 'अहिलेसम्म कुनै उत्पादन सूचीबद्ध छैन',
+    'farmer.myCropsEmptyCta': 'पहिलो उत्पादन थप्नुहोस्', 'farmer.status': 'स्थिति',
+    'farmer.addCropTitle': 'नयाँ उत्पादन थप्नुहोस्',
+    'farmer.cropName': 'उत्पादनको नाम', 'farmer.cropQty': 'मात्रा (के.जी.)', 'farmer.cropPrice': 'प्रति के.जी. मूल्य (रु)',
+    'farmer.cropHarvest': 'कटनी मिति', 'farmer.cropLocation': 'स्थान',
+    'farmer.cropDescription': 'विवरण', 'farmer.cropImage': 'उत्पादन तस्बिर URL',
+    'farmer.cropImageHint': 'सार्वजनिक तस्बिर URL टाँस्नुहोस् (https://…)',
+    'farmer.cropCategory': 'श्रेणी', 'farmer.cropCategoryHint': 'जस्तै: तरकारी, अन्न, फल',
+    'farmer.addCropSubmit': 'उत्पादन थप्नुहोस्',
+    'farmer.addCropSuccess': 'उत्पादन थपियो! एडमिनले स्वीकृत गरेपछि सार्वजनिक देखिनेछ।',
+    'farmer.yourPrice': 'तपाईंको मूल्य', 'farmer.notListed': 'सूचीबद्ध छैन',
+    'farmer.profileTitle': 'मेरो प्रोफाइल', 'farmer.fullName': 'पूरा नाम', 'farmer.phone': 'फोन नम्बर',
+    'farmer.farmLocation': 'फार्म स्थान', 'farmer.yearsExperience': 'अनुभव वर्ष',
+    'farmer.aboutFarm': 'तपाईंको फार्मको बारेमा', 'farmer.avatar': 'प्रोफाइल तस्बिर',
+    'farmer.changePicture': 'तस्बिर बदल्नुहोस्', 'farmer.save': 'परिवर्तन सुरक्षित गर्नुहोस्', 'farmer.reset': 'रिसेट',
+    'farmer.profileSaved': 'प्रोफाइल अपडेट भयो।',
+    'farmer.role': 'किसान', 'farmer.editProfile': 'प्रोफाइल सम्पादन', 'farmer.cancel': 'रद्द',
+    'wholesaler.dashboard': 'ड्यासबोर्ड', 'wholesaler.browseCrops': 'उत्पादन खोज्नुहोस्', 'wholesaler.myOrders': 'मेरा अर्डरहरू',
+    'wholesaler.marketPrices': 'बजार मूल्य', 'wholesaler.profile': 'प्रोफाइल', 'wholesaler.logout': 'लगआउट',
+    'wholesaler.welcome': 'फेरि स्वागत छ, {name}',
+    'wholesaler.statTotalOrders': 'कुल अर्डर', 'wholesaler.statFarmersContacted': 'सम्पर्क गरिएका किसान',
+    'wholesaler.statTotalSpent': 'कुल खर्च', 'wholesaler.quickActions': 'छिटो कार्यहरू',
+    'wholesaler.actionBrowseCrops': 'उत्पादन खोज्नुहोस्', 'wholesaler.actionMyOrders': 'मेरा अर्डरहरू',
+    'wholesaler.actionMarketPrices': 'बजार मूल्य', 'wholesaler.actionUpdateProfile': 'प्रोफाइल अपडेट',
+    'wholesaler.featuredToday': 'आजका विशेष उत्पादन', 'wholesaler.browseTitle': 'उत्पादन खोज्नुहोस्',
+    'wholesaler.filterCrop': 'उत्पादन फिल्टर', 'wholesaler.allCrops': 'सबै उत्पादन',
+    'wholesaler.priceRange': 'मूल्य दायरा', 'wholesaler.anyPrice': 'कुनै मूल्य',
+    'wholesaler.location': 'स्थान', 'wholesaler.apply': 'फिल्टर लागू', 'wholesaler.clear': 'स्पष्ट',
+    'wholesaler.browseEmpty': 'तपाईंको फिल्टरसँग मिल्ने उत्पादन छैन।',
+    'wholesaler.ordersTitle': 'मेरा अर्डरहरू', 'wholesaler.ordersPending': 'विचाराधीन अर्डर',
+    'wholesaler.ordersCompleted': 'सम्पन्न अर्डर', 'wholesaler.ordersContacts': 'किसान सम्पर्क',
+    'wholesaler.ordersPendingEmpty': 'विचाराधीन अर्डर छैनन् — तपाईंका विचाराधीन अर्डरहरू यहाँ देखिनेछन्।',
+    'wholesaler.ordersCompletedEmpty': 'अहिलेसम्म कुनै सम्पन्न अर्डर छैन।',
+    'wholesaler.ordersContactsEmpty': 'तपाईंले अहिलेसम्म कुनै किसानलाई सम्पर्क गर्नुभएको छैन।',
+    'wholesaler.availableFarmers': 'उपलब्ध किसान',
+    'wholesaler.profileTitle': 'मेरो प्रोफाइल', 'wholesaler.fullName': 'पूरा नाम',
+    'wholesaler.businessName': 'व्यवसायको नाम', 'wholesaler.phone': 'फोन नम्बर',
+    'wholesaler.businessLocation': 'व्यवसाय स्थान', 'wholesaler.yearsInBusiness': 'व्यवसाय वर्ष',
+    'wholesaler.storageCapacity': 'भण्डारण क्षमता (टन)', 'wholesaler.aboutBusiness': 'तपाईंको व्यवसायको बारेमा',
+    'wholesaler.avatar': 'प्रोफाइल तस्बिर', 'wholesaler.changePicture': 'तस्बिर बदल्नुहोस्',
+    'wholesaler.role': 'थोक व्यापारी', 'wholesaler.editProfile': 'प्रोफाइल सम्पादन', 'wholesaler.cancel': 'रद्द',
+    'wholesaler.save': 'परिवर्तन सुरक्षित गर्नुहोस्', 'wholesaler.reset': 'रिसेट', 'wholesaler.profileSaved': 'प्रोफाइल अपडेट भयो।',
+    'admin.dashboard': 'ड्यासबोर्ड', 'admin.users': 'प्रयोगकर्ता', 'admin.pendingCrops': 'विचाराधीन उत्पादन',
+    'admin.orders': 'अर्डरहरू', 'admin.marketPrices': 'बजार मूल्य', 'admin.logout': 'लगआउट',
+    'admin.welcome': 'एडमिन कन्सोल',
+    'admin.statActiveCrops': 'कुल सक्रिय उत्पादन', 'admin.statTotalOrders': 'कुल अर्डर',
+    'admin.statTotalKg': 'कुल के.जी. अर्डर', 'admin.statTotalUsers': 'कुल प्रयोगकर्ता',
+    'admin.usersTitle': 'प्रयोगकर्ता', 'admin.userName': 'नाम', 'admin.userBusiness': 'व्यवसाय',
+    'admin.userPhone': 'फोन', 'admin.userRole': 'भूमिका', 'admin.userStatus': 'स्थिति',
+    'admin.userActions': 'कार्य', 'admin.activate': 'सक्रिय', 'admin.suspend': 'निलम्बन',
+    'admin.usersEmpty': 'कुनै प्रयोगकर्ता फेला परेन।',
+    'admin.pendingTitle': 'विचाराधीन उत्पादन', 'admin.pendingEmpty': 'स्वीकृतिका लागि कुनै उत्पादन छैन।',
+    'admin.pendingCrop': 'उत्पादन', 'admin.pendingFarmer': 'किसान', 'admin.pendingPrice': 'मूल्य',
+    'admin.pendingQuantity': 'मात्रा', 'admin.approve': 'स्वीकृत', 'admin.reject': 'अस्वीकृत',
+    'admin.ordersTitle': 'सबै अर्डरहरू', 'admin.ordersEmpty': 'अहिलेसम्म कुनै अर्डर छैन।',
+    'admin.ordersBuyer': 'खरिदकर्ता', 'admin.ordersSeller': 'विक्रेता', 'admin.ordersCrop': 'उत्पादन',
+    'admin.ordersQuantity': 'मात्रा', 'admin.ordersStatus': 'स्थिति', 'admin.ordersDate': 'मिति',
+    'admin.pricesTitle': 'बजार मूल्य', 'admin.pricesAdd': 'नयाँ मूल्य थप्नुहोस्', 'admin.pricesUpdate': 'अपडेट',
+    'admin.pricesDelete': 'मेटाउनुहोस्', 'admin.pricesProduct': 'उत्पादन', 'admin.pricesUnit': 'एकाइ',
+    'admin.pricesMin': 'न्यूनतम मूल्य', 'admin.pricesMax': 'अधिकतम मूल्य', 'admin.pricesAvg': 'औसत मूल्य',
+    'admin.pricesTrend': 'प्रवृत्ति', 'admin.pricesUp': 'माथि', 'admin.pricesDown': 'तल', 'admin.pricesStable': 'स्थिर',
+    'admin.pricesSave': 'सुरक्षित', 'admin.pricesSaved': 'मूल्य सुरक्षित भयो।',
+    'admin.pricesEmpty': 'अहिलेसम्म मूल्य छैन। माथि पहिलो थप्नुहोस्।',
+    'common.loading': 'लोड हुँदै…', 'common.error': 'केही गडबड भयो।', 'common.retry': 'फेरि प्रयास',
+    'common.save': 'सुरक्षित', 'common.cancel': 'रद्द', 'common.back': 'पछाडि',
+    'common.kg': 'के.जी.', 'common.npr': 'रु', 'common.actions': 'कार्य',
+    'status.pending': 'विचाराधीन', 'status.approved': 'स्वीकृत', 'status.rejected': 'अस्वीकृत',
+    'status.sold_out': 'बिक्री भयो', 'status.active': 'सक्रिय', 'status.suspended': 'निलम्बित',
+    'status.banned': 'प्रतिबन्धित', 'status.completed': 'सम्पन्न', 'status.cancelled': 'रद्द',
+    'role.farmer': 'किसान', 'role.wholesaler': 'थोक व्यापारी', 'role.admin': 'एडमिन',
+    'trend.up': 'माथि', 'trend.down': 'तल', 'trend.stable': 'स्थिर',
+    'toast.loginRequired': 'कृपया अगाडि बढ्न लगइन गर्नुहोस्।',
+    'farmer.statement': 'विवरण', 'wholesaler.statement': 'विवरण',
+    'statement.title': 'कारोबार विवरण', 'statement.subtitle': 'कृषि कनेक्टमा तपाईंका अर्डरहरूको पूरा रेकर्ड।',
+    'statement.from': 'देखि', 'statement.to': 'सम्म', 'statement.status': 'स्थिति',
+    'statement.allStatuses': 'सबै स्थिति', 'statement.apply': 'लागू', 'statement.clear': 'स्पष्ट',
+    'statement.export': 'CSV निर्यात', 'statement.date': 'मिति', 'statement.crop': 'उत्पादन',
+    'statement.qty': 'मात्रा', 'statement.price': 'प्रति के.जी. मूल्य', 'statement.amount': 'रकम',
+    'statement.counterpart': 'खरिदकर्ता', 'statement.counterpartSeller': 'विक्रेता',
+    'statement.statusCol': 'स्थिति', 'statement.grandTotal': 'कुल योग (सम्पन्न)',
+    'statement.empty': 'तपाईंको फिल्टरसँग मिल्ने कारोबार छैन।', 'statement.count': 'अर्डर',
+    'statement.completedCount': 'सम्पन्न',
+    'reviews.title': 'समीक्षा', 'reviews.average': '{avg} — {count} समीक्षा',
+    'reviews.noReviews': 'अहिलेसम्म कुनै समीक्षा छैन', 'reviews.seeAll': 'सबै समीक्षा हेर्नुहोस्',
+    'reviews.leaveReview': 'समीक्षा दिनुहोस्', 'reviews.leaveReviewDesc': 'सम्पन्न अर्डरको समीक्षा दिनुहोस्।',
+    'reviews.noEligible': 'तपाईंका कुनै सम्पन्न अर्डर समीक्षाका लागि बाँकी छैनन्।',
+    'reviews.selectOrder': 'समीक्षा दिने अर्डर छान्नुहोस्',
+    'reviews.rating': 'तारा', 'reviews.comment': 'टिप्पणी (वैकल्पिक)',
+    'reviews.submit': 'समीक्षा पेस गर्नुहोस्', 'reviews.cancel': 'रद्द',
+    'reviews.success': 'समीक्षा पेस भयो। धन्यवाद!', 'reviews.error': 'समीक्षा पेस गर्न सकिएन।',
+    'reviews.verified': 'प्रमाणित खरिद', 'reviews.orderOn': '{date} को अर्डर',
+    'reviews.by': '{name} द्वारा', 'reviews.you': 'तपाईं',
+    'reviews.myReviews': 'मेरा समीक्षा', 'reviews.myReviewsEmpty': 'तपाईंले अहिलेसम्म कुनै समीक्षा लेख्नुभएको छैन।',
+    'reviews.aboutYou': 'तपाईंका बारेमा समीक्षा', 'reviews.aboutFarmer': 'यस किसानका समीक्षा',
+    'reviews.aboutWholesaler': 'यस थोक व्यापारीका समीक्षा',
+    'reviews.stars': '{n} तारा',
+  },
+};
+
+const STORAGE_KEY = 'kc_lang';
+let currentLang = 'en';
+try {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved === 'ne' || saved === 'en') currentLang = saved;
+} catch {}
+
+export function getLang() { return currentLang; }
+export function setLang(l) {
+  currentLang = l;
+  try { localStorage.setItem(STORAGE_KEY, l); } catch {}
+  document.documentElement.lang = l;
+  document.dispatchEvent(new CustomEvent('langchange', { detail: l }));
+}
+
+export function t(key, vars) {
+  const raw = (STRINGS[currentLang] && STRINGS[currentLang][key]) || STRINGS.en[key] || key;
+  if (!vars) return raw;
+  return raw.replace(/\{(\w+)\}/g, (_, k) => String(vars[k] ?? `{${k}}`));
+}
+
+export function formatNPR(n) {
+  const num = Number(n) || 0;
+  return 'रु ' + num.toLocaleString('en-IN');
+}
+
+export function timeAgo(iso) {
+  const then = new Date(iso).getTime();
+  const diff = Date.now() - then;
+  const sec = Math.round(diff / 1000);
+  const min = Math.round(sec / 60);
+  const hr = Math.round(min / 60);
+  const day = Math.round(hr / 24);
+  if (currentLang === 'ne') {
+    if (sec < 60) return 'भर्खरै';
+    if (min < 60) return `${min} मिनेट अघि`;
+    if (hr < 24) return `${hr} घण्टा अघि`;
+    return `${day} दिन अघि`;
+  }
+  if (sec < 60) return 'just now';
+  if (min < 60) return `${min} min ago`;
+  if (hr < 24) return `${hr} hr ago`;
+  return `${day} day${day === 1 ? '' : 's'} ago`;
+}
+
+// Hero carousel images. No stock photos are pulled in — these are placeholder
+// slots. Drop your own photos at /public/images/<filename> and they'll render.
+export const HERO_IMAGES = [
+  { file: 'tea.svg', alt: 'Tea garden', altNe: 'चिया बगान' },
+  { file: 'rice.svg', alt: 'Rice terraces', altNe: 'धान खेत' },
+  { file: 'tomato.svg', alt: 'Tomatoes', altNe: 'टमाटर' },
+  { file: 'wheat.svg', alt: 'Wheat field', altNe: 'गहुँ खेत' },
+  { file: 'onion.svg', alt: 'Onions', altNe: 'प्याज' },
+];
+
+// Try to load an image from /images/<file>; if it 404s, render a labeled gray
+// placeholder box instead. Returns an <img> or a <div> placeholder element.
+export function imageOrPlaceholder(file, alt, classes) {
+  // We render an <img> that swaps to a placeholder on error. The caller sets
+  // the class on both so layout is stable.
+  return `<img src="/images/${file}" alt="${alt}" class="${classes}" loading="lazy" onerror="this.replaceWith(placeholderFor('${file}','${alt.replace(/'/g, '&#39;')}','${classes}'))" />`;
+}
+
+// Global helper used by onerror handlers above.
+window.placeholderFor = function (file, label, classes) {
+  const div = document.createElement('div');
+  div.className = (classes || '') + ' img-placeholder';
+  div.setAttribute('aria-label', label);
+  div.innerHTML = `<span class="img-placeholder-icon">🖼️</span><span class="img-placeholder-label">${file}</span>`;
+  return div;
+};
+
+// For crop cards: if the farmer uploaded an image_url, use it. Otherwise derive
+// a sensible filename from the crop name and treat it as a placeholder slot.
+export function cropImageSrc(crop) {
+  if (crop.image_url) return { kind: 'url', src: crop.image_url };
+  if (crop.images && crop.images[0] && crop.images[0].image_url) return { kind: 'url', src: crop.images[0].image_url };
+  const file = cropFilename(crop);
+  return { kind: 'file', file };
+}
+
+function cropFilename(crop) {
+  const name = (crop.name || '').toLowerCase().trim();
+  const map = {
+    rice: 'rice.svg', 'धान': 'rice.svg', paddy: 'rice.svg',
+    tomato: 'tomato.svg', 'टमाटर': 'tomato.svg',
+    wheat: 'wheat.svg', 'गहुँ': 'wheat.svg',
+    onion: 'onion.svg', 'प्याज': 'onion.svg',
+    tea: 'tea.svg', 'चिया': 'tea.svg',
+    potato: 'potato.svg', 'आलु': 'potato.svg',
+  };
+  for (const key of Object.keys(map)) {
+    if (name.includes(key)) return map[key];
+  }
+  // Default: slugify the crop name.
+  return name.replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') + '.svg' || 'crop.svg';
+}
+
+export function statusBadgeClass(status) {
+  return {
+    pending: 'badge-amber', approved: 'badge-green', rejected: 'badge-red', sold_out: 'badge-gray',
+    completed: 'badge-green', cancelled: 'badge-red',
+    active: 'badge-green', suspended: 'badge-amber', banned: 'badge-red',
+  }[status] || 'badge-gray';
+}
+
+export function trendClass(trend) {
+  return { up: 'trend-up', down: 'trend-down', stable: 'trend-stable' }[trend] || 'trend-stable';
+}
+
+export function trendIcon(trend) {
+  if (trend === 'up') return '↑';
+  if (trend === 'down') return '↓';
+  return '→';
+}

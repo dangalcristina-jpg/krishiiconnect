@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%234CAF50'/%3E%3Ctext x='16' y='22' font-size='18' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='white'%3EK%3C/text%3E%3C/svg%3E" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <title>Login — Krishi Connect</title>
+    <link rel="stylesheet" href="/src/styles/app.css" />
+  </head>
+  <body>
+    <div id="navbar"></div>
+    <main>
+      <div class="container" style="padding:48px 0;">
+        <div style="max-width:420px;margin:0 auto;">
+          <div class="card card-pad">
+            <div class="brand mb-4"><img src="/images/logo.png" class="brand-logo" alt="Krishi Connect" /><span class="brand-name">Krishi Connect</span></div>
+            <h1 class="block-title" data-i18n="auth.loginTitle"></h1>
+            <p class="text-muted" data-i18n="auth.loginSubtitle"></p>
+            <form id="login-form" class="form mt-6">
+              <div class="field">
+                <label for="phone" data-i18n="auth.phone"></label>
+                <input id="phone" name="phone" type="tel" inputmode="numeric" required placeholder="98XXXXXXXX" />
+              </div>
+              <div class="field">
+                <label for="pin" data-i18n="auth.pin"></label>
+                <input id="pin" name="pin" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required placeholder="••••" />
+              </div>
+              <p id="login-error" class="form-error" style="display:none;"></p>
+              <button type="submit" class="btn btn-primary btn-block" id="login-submit" data-i18n="auth.login"></button>
+            </form>
+            <div class="flex items-center justify-between mt-4 text-sm">
+              <span class="text-muted" data-i18n="auth.noAccount"></span>
+              <a href="/register" class="font-semibold" style="color:var(--green);" data-i18n="auth.signupHere"></a>
+            </div>
+            <div class="text-right mt-2">
+              <a href="#" id="forgot-pin-link" class="text-xs text-muted">Forgot PIN?</a>
+            </div>
+            <div class="text-right mt-2">
+              <a href="/admin/login" class="text-xs text-muted" data-i18n="auth.adminLink"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div id="footer"></div>
+    <script type="module" src="/src/pages/login.js"></script>
+  </body>
+</html>

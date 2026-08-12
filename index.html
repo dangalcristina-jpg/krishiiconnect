@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%234CAF50'/%3E%3Ctext x='16' y='22' font-size='18' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='white'%3EK%3C/text%3E%3C/svg%3E" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <title>Krishi Connect — किसानबाट बजारसम्म</title>
+    <link rel="stylesheet" href="/src/styles/app.css" />
+    <meta property="og:image" content="https://bolt.new/static/og_default.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
+</head>
+  <body>
+    <div id="navbar"></div>
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <span class="hero-eyebrow"> <span data-i18n="brand.tagline"></span></span>
+            <h1 data-i18n-html="home.heroTitle"></h1>
+            <p class="hero-tagline" data-i18n="home.heroSubtitle"></p>
+            <p class="hero-desc" data-i18n="home.heroDesc"></p>
+            <div class="hero-cta">
+              <a href="/register?role=farmer" class="btn btn-primary" data-i18n="home.joinFarmer"></a>
+              <a href="/register?role=wholesaler" class="btn btn-accent" data-i18n="home.joinWholesaler"></a>
+            </div>
+          </div>
+          <div id="carousel"></div>
+        </div>
+      </section>
+
+      <!-- Statistics -->
+      <section class="section section-sm" style="background:linear-gradient(135deg,#f0f7f0,#faf9f0);">
+        <div class="container">
+          <div id="stats-grid" class="stats-grid"></div>
+        </div>
+      </section>
+
+      <!-- Featured Crops -->
+      <section class="section" id="featured-section" style="background:#f9fafb;">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <h2 class="section-title" data-i18n="home.featured"></h2>
+              <p class="section-sub" data-i18n="home.featuredDesc"></p>
+            </div>
+            <a href="/products" class="btn btn-outline" data-i18n="home.viewAll"></a>
+          </div>
+          <div id="featured-crops" class="crop-grid"></div>
+        </div>
+      </section>
+
+      <!-- Market Prices -->
+      <section class="section" id="home-prices">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <h2 class="section-title" data-i18n="home.marketPricesTitle"></h2>
+              <p class="section-sub" data-i18n="home.marketPricesDesc"></p>
+            </div>
+          </div>
+          <div id="home-price-table"></div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="section" id="testimonials-section">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <h2 class="section-title" data-i18n="home.testimonialsTitle"></h2>
+              <p class="section-sub" data-i18n="home.testimonialsDesc"></p>
+            </div>
+          </div>
+          <div id="testimonials-slider"></div>
+        </div>
+      </section>
+
+      <!-- News & Tips -->
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <h2 class="section-title" data-i18n="home.newsTitle"></h2>
+              <p class="section-sub" data-i18n="home.newsDesc"></p>
+            </div>
+            <button class="btn btn-outline" id="view-all-articles" data-i18n="home.viewAllArticles"></button>
+          </div>
+          <div id="news-grid" class="news-grid"></div>
+        </div>
+      </section>
+
+      <!-- Download App -->
+      <section class="section download-section">
+        <div class="container">
+          <div class="download-grid">
+            <div class="download-info">
+              <h2 data-i18n="home.downloadTitle"></h2>
+              <p data-i18n="home.downloadDesc"></p>
+              <div class="download-badges">
+                <div class="download-badge" data-i18n="home.googlePlay"></div>
+                <div class="download-badge" data-i18n="home.appStore"></div>
+              </div>
+            </div>
+            <div class="download-qr">
+              <div class="qr-placeholder" data-i18n="home.qrCode"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter -->
+      <section class="section section-sm">
+        <div class="container">
+          <div class="newsletter-box">
+            <h2 data-i18n="home.newsletterTitle"></h2>
+            <p data-i18n="home.newsletterDesc"></p>
+            <form id="newsletter-form" class="newsletter-form">
+              <input type="email" id="newsletter-email" required placeholder="your@email.com" data-i18n-placeholder="home.newsletterPlaceholder" />
+              <button type="submit" class="btn btn-primary" data-i18n="home.subscribe"></button>
+            </form>
+            <p id="newsletter-msg" class="newsletter-msg" style="display:none;"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="section" id="home-contact" style="background:#f9fafb;">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <h2 class="section-title" data-i18n="home.contactTitle"></h2>
+              <p class="section-sub" data-i18n="home.contactDesc"></p>
+            </div>
+          </div>
+          <div class="contact-grid">
+            <div id="contact-info"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div id="footer"></div>
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
+    <div id="modal-root"></div>
+    <script type="module" src="/src/pages/home.js"></script>
+  </body>
+</html>
